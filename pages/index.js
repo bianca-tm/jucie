@@ -213,6 +213,27 @@ export default function Home() {
     }
   };
 
+    // Get a random fruit and fact
+  const fetchRandomFactForFruit = () => {
+  setIsLoading(true);
+  setError(null);
+  try {
+    const fruit = fruitData.find(f => f.name === currentFruit.name);
+    if (!fruit) throw new Error("Fruit not found.");
+    // Exclude the current fact
+    const otherFacts = fruit.facts.filter(fact => fact !== currentFact);
+    // If all facts have been shown, allow repeats
+    const fact = otherFacts.length > 0
+      ? otherFacts[Math.floor(Math.random() * otherFacts.length)]
+      : fruit.facts[Math.floor(Math.random() * fruit.facts.length)];
+    setCurrentFact(fact);
+  } catch (error) {
+    setError('Something went wrong. Please try again.');
+  } finally {
+    setIsLoading(false);
+  }
+};
+
   // Dark mode preference
   useEffect(() => {
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -244,7 +265,7 @@ export default function Home() {
         <p className="description">so you wanna learn about fruits?</p>
         <button
           type="button"
-          id="randomFruit"
+          id="getStarted"
           className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
           onClick={fetchRandomFruitWithFact}
           disabled={isLoading}
@@ -257,6 +278,24 @@ export default function Home() {
             <div className="text-6xl">{currentFruit.emoji}</div>
             <div className="text-xl font-semibold capitalize">{currentFruit.name}</div>
             <div className="mt-2 text-gray-700">{currentFact}</div>
+            <button
+          type="button"
+          id="randomFruit"
+          className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
+          onClick={fetchRandomFruitWithFact}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "new fruit"}
+        </button>
+        <button
+          type="button"
+          id="randomFact"
+          className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
+          onClick={fetchRandomFactForFruit}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "new fact"}
+        </button>
           </div>
         )}
       </main>
