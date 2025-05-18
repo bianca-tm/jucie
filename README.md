@@ -1,3 +1,17 @@
+# jucie!
+
+## About Project:
+
+The purpose of this project is just to mess around with some light `javascript`, `css`, and gain a deeper understanding of starters like `Netlify`. 
+
+And also learn some interesting / random facts about fruits! 
+
+### Next steps? ideas? thoughts?
+
+No potential ideas atm, but potentially looking to include some type of ai feature or search engine that allows users to type a specific fruit and then they'll get a random fact about it!
+
+(Standard info about Netlify below!)
+
 # Next + Netlify Starter
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
