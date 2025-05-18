@@ -7,7 +7,9 @@ export default function Home() {
   const [currentFact, setCurrentFact] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
+  // TODO: Implement dark mode
+  // const [darkMode, setDarkMode] = useState(false);
+  const [showFruit, setShowFruit] = useState(false);
 
   // Fruit data with emojis and related facts
   const fruitData = [
@@ -245,11 +247,13 @@ export default function Home() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  // Initialize with random fruit and fact
+  // Initialize with random fruit and fact, but only when showFruit is TRUE
   useEffect(() => {
-    fetchRandomFruitWithFact();
+    if (showFruit) {
+      fetchRandomFruitWithFact();
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [showFruit]);
 
   return (
     <div className="full-container bg-gradient-to-bl from-slate-300 via-slate-300 to-slate-300 ">
@@ -263,40 +267,46 @@ export default function Home() {
           jucie
         </h1>
         <p className="description">so you wanna learn about fruits?</p>
-        <button
-          type="button"
-          id="getStarted"
-          className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
-          onClick={fetchRandomFruitWithFact}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "get jiggy"}
-        </button>
-        {error && <div className="text-red-500">{error}</div>}
-        {currentFruit.name && (
-          <div className="mt-4 text-center">
-            <div className="text-6xl">{currentFruit.emoji}</div>
-            <div className="text-xl font-semibold capitalize">{currentFruit.name}</div>
-            <div className="mt-2 text-gray-700">{currentFact}</div>
-            <button
-          type="button"
-          id="randomFruit"
-          className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
-          onClick={fetchRandomFruitWithFact}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "new fruit"}
-        </button>
-        <button
-          type="button"
-          id="randomFact"
-          className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
-          onClick={fetchRandomFactForFruit}
-          disabled={isLoading}
-        >
-          {isLoading ? "Loading..." : "new fact"}
-        </button>
-          </div>
+        {!showFruit && (
+          <button
+            type="button"
+            id="getStarted"
+            className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
+            onClick={() => setShowFruit(true)}
+            disabled={isLoading}
+          >
+            {isLoading ? "Loading..." : "get jiggy"}
+          </button>
+        )}
+        {showFruit && (
+          <>
+            {error && <div className="text-red-500">{error}</div>}
+            {currentFruit.name && (
+              <div className="mt-4 text-center">
+                <div className="text-6xl">{currentFruit.emoji}</div>
+                <div className="text-xl font-semibold capitalize">{currentFruit.name}</div>
+                <div className="mt-2 text-gray-700">{currentFact}</div>
+                <button
+                  type="button"
+                  id="randomFruit"
+                  className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
+                  onClick={fetchRandomFruitWithFact}
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Loading..." : "new fruit"}
+                </button>
+                <button
+                  type="button"
+                  id="randomFact"
+                  className="inline-flex items-center cursor-pointer rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10 m-5 animate-bounce"
+                  onClick={fetchRandomFactForFruit}
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Loading..." : "new fact"}
+                </button>
+              </div>
+            )}
+          </>
         )}
       </main>
     </div>
