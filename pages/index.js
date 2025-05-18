@@ -5,7 +5,7 @@ export default function Home() {
     <div className="container bg-gradient-to-bl from-slate-300 via-slate-300 to-slate-300 ">
       <Head>
         <title>jucie!</title>
-        <link rel="icon" href="assets/favicon.ico" />
+        <link rel="icon" href="assets/pear.png" />
         <script src="https://cdn.tailwindcss.com"></script>
       </Head>
       <main class="flex justify-center">
