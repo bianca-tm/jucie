@@ -2,7 +2,7 @@ import Head from "next/head";
 
 export default function Home() {
   return (
-    <div className="container bg-gradient-to-bl from-slate-300 via-slate-300 to-slate-300 ">
+    <div className="full-container bg-gradient-to-bl from-slate-300 via-slate-300 to-slate-300 ">
       <Head>
         <title>jucie!</title>
         <link rel="icon" href="assets/pear.png" />
