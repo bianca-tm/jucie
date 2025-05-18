@@ -263,11 +263,10 @@ export default function Home() {
         <script src="https://cdn.tailwindcss.com"></script>
       </Head>
       <main className="flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl m-5 animate-[wiggle_1s_ease-in-out_infinite]">
-          jucie
-        </h1>
-        <p className="description">so you wanna learn about fruits?</p>
         {!showFruit && (
+          <div className="text-center">
+            <h1 className="text-4xl font-bold text-gray-800">jucie!</h1>
+            <p className="mt-2 text-lg text-gray-600">so you wanna learn about fruits?</p>
           <button
             type="button"
             id="getStarted"
@@ -277,6 +276,7 @@ export default function Home() {
           >
             {isLoading ? "Loading..." : "get jiggy"}
           </button>
+          </div> 
         )}
         {showFruit && (
           <>
