@@ -145,7 +145,7 @@ export default function Home() {
     },
     {
       name: 'blueberry',
-      emoji: '🫐',
+      emoji: '❔',
       facts: [
         'Blueberries can improve memory function.',
         'Blueberries are one of the few naturally blue foods.',
