@@ -5,7 +5,10 @@ The purpose of this project is just to mess around with some light javascript, c
 
 And also learn some interesting / random facts about fruits!
 
- ![Preview](public/assets/jucie.gif)
+<div align="center">
+  <img src="public/assets/jucie.gif" width="426" alt="jucie gif"/>
+</div>
+
 
 ---
 
