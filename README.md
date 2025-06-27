@@ -12,7 +12,7 @@ And also learn some interesting / random facts about fruits!
 
 ---
 
-## 🚀 Features
+## Features
 
 - **Responsive Design** – Optimized for both desktop and mobile devices.
 - **Modern UI** – Bright, bold visuals with a playful brand personality.
