@@ -5,13 +5,7 @@ The purpose of this project is just to mess around with some light javascript, c
 
 And also learn some interesting / random facts about fruits!
 
-
-
----
-
-## Preview
-
-> Add a screenshot or GIF of the homepage and one product or navigation interaction here for more visual impact.
+ ![Preview](public/assets/jucie.gif)
 
 ---
 
